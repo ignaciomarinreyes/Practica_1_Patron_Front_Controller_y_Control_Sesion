@@ -21,7 +21,6 @@
         <div id="centerSpace">
             <%
                 ArrayList<Post> posts = new ArrayList<Post>();
-                System.out.println(request.getParameter("subjects"));
                 if(request.getParameter("subjects").equalsIgnoreCase("Arquitectura del Sofware")){
                     posts = data.Data.loadPostsArquitecturaSofware((User) session.getAttribute("user"));      
                 } else if(request.getParameter("subjects").equalsIgnoreCase("Gestion del Sofware")){

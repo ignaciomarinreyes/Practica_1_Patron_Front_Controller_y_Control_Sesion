@@ -1,13 +1,15 @@
 
 package presentation.commands;
 
+import util.MyLogger;
+
 
 public class Unknow extends FrontCommand{
-
+        
     @Override
     public void process() {
-        // Guardar en un fichero
+        MyLogger.writeLogSevere("Error en el comando");
         forward("/Unknow.jsp");
     }
-    
+      
 }
