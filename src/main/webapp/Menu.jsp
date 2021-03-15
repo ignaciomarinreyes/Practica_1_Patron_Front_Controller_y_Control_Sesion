@@ -13,5 +13,5 @@
     <form style='float: right; margin-right: 10px;'>                         
         <input value='Perfil' type='submit'>
     </form> 
-    <div style='float: right; margin-right: 10px; padding-top: 5px; background-color: white;'><%= ((User) request.getSession().getAttribute("user")).getName()%></div>
+    <div style='float: right; margin-right: 10px; padding-top: 5px; background-color: white; font-size: 15pt;'><%= ((User) request.getSession().getAttribute("user")).getName()%></div>
 </div>

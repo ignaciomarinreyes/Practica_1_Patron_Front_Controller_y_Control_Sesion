@@ -5,8 +5,14 @@
  */
 package presentation.servlet;
 
+import business.Comment;
+import business.Post;
+import business.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import javax.ejb.ApplicationException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,8 +52,9 @@ public class FrontController extends HttpServlet {
         try{
             FrontCommand f = (FrontCommand) getCommandClass(request).newInstance();
             return f;
-        } catch(Exception e){
+        } catch(Exception e){          
             e.printStackTrace();
+            //throw new ApplicationException(e) {};
             return null;
         }
     }
@@ -58,13 +65,13 @@ public class FrontController extends HttpServlet {
         try{
             result = Class.forName(command);
         } catch(ClassNotFoundException e){
-            //result = UnknownCommand.class;
+            result = presentation.commands.Unknow.class;
         }
         return result;
     }
         
     private boolean isLogged(HttpServletRequest request) {
-        return request.getSession().getAttribute("user") != null;
+        return request.getSession().getAttribute("user") != null;    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

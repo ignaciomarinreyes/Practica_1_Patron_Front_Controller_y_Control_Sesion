@@ -4,9 +4,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="template.css"/>
         <title>Unknow</title>
     </head>
     <body>
-        <h1>Unknow</h1>
+        <%@ include file="Header.html"%>     
+        <h1 style='text-align: center;'>
+            Mensaje de error
+        </h1>
+        <p style='padding-left: 10px;'>
+            Se ha producido un error en el comando
+        </p>
+        <%@ include file="Footer.html"%> 
     </body>
 </html>
