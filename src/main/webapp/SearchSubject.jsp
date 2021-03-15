@@ -25,7 +25,7 @@
                     <option value="Arquitectura del Sofware">Arquitectura del Software</option>
                     <option value="Gestion del Sofware">Gestión del Sofware</option>
                 </select><br>     
-                <input type='hidden' name='command' value='ShowPostFollowedSubjects'>          
+                <input type='hidden' name='command' value='ShowPostsSubject'>          
                 <input value='Buscar' type='submit'>
             </form>
         </div>

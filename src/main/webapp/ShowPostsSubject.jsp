@@ -1,14 +1,15 @@
-<%@page import="data.Data"%>
-<%@page import="business.Comment"%>
 <%@page import="java.time.LocalDate"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="business.Comment"%>
 <%@page import="business.Post"%>
+<%@page import="data.Data"%>
+<%@ page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="template.css"/>
+        <title>ShowPostsSubject</title>
     </head>
     <body>
         <%
@@ -16,10 +17,15 @@
                 response.sendRedirect("Login.jsp");
         %>
         <%@ include file="Header.html"%>    
-        <%@ include file="Menu.jsp"%>    
+        <%@ include file="Menu.jsp"%>
         <div id="centerSpace">
-             <%
-                ArrayList<Post> posts = Data.loadPostsFollowedSubject();
+            <%
+                ArrayList<Post> posts = new ArrayList<Post>();
+                if(request.getParameter("subjects").equalsIgnoreCase("Arquitectura del Sofware")){
+                    posts = Data.loadPostsArquitecturaSofware();      
+                } else if(request.getParameter("subjects").equalsIgnoreCase("Gestion del Sofware")){
+                   posts = Data.loadPostsGestionSofware();  
+                } 
                 for (Post post : posts) {
                     out.println("<div class='post'><h1>" + post.getTitle() + "</h1>"
                             + "<div class='tuser'><span>" + post.getUser().getName() + "</span><span> " + post.getDate() + "</span></div>"

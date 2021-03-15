@@ -1,15 +1,15 @@
-<%@page import="java.time.LocalDate"%>
-<%@page import="business.Comment"%>
-<%@page import="business.Post"%>
 <%@page import="data.Data"%>
-<%@ page import="java.util.ArrayList"%>
+<%@page import="business.User"%>
+<%@page import="business.Comment"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="business.Post"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="template.css"/>
-        <title>ShowPostFollowedSubjects</title>
     </head>
     <body>
         <%
@@ -17,15 +17,10 @@
                 response.sendRedirect("Login.jsp");
         %>
         <%@ include file="Header.html"%>    
-        <%@ include file="Menu.jsp"%>
+        <%@ include file="Menu.jsp"%>    
         <div id="centerSpace">
-            <%
-                ArrayList<Post> posts = new ArrayList<Post>();
-                if(request.getParameter("subjects").equalsIgnoreCase("Arquitectura del Sofware")){
-                    posts = data.Data.loadPostsArquitecturaSofware((User) session.getAttribute("user"));      
-                } else if(request.getParameter("subjects").equalsIgnoreCase("Gestion del Sofware")){
-                   posts = data.Data.loadPostsGestionSofware((User) session.getAttribute("user"));  
-                } 
+             <%
+                ArrayList<Post> posts = Data.loadMyPosts();
                 for (Post post : posts) {
                     out.println("<div class='post'><h1>" + post.getTitle() + "</h1>"
                             + "<div class='tuser'><span>" + post.getUser().getName() + "</span><span> " + post.getDate() + "</span></div>"

@@ -8,6 +8,7 @@ package presentation.servlet;
 import business.Rol;
 import business.User;
 import business.Address;
+import data.Data;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -48,7 +49,7 @@ public class Login extends HttpServlet {
         HttpSession session = request.getSession();
         String nickname = request.getParameter("nickname");
         String password = request.getParameter("password");
-        User user = new User(nickname, password,"Ignacio", "Marín Reyes",Rol.Student, new Address("Polizón", "24", "35118", "Agüimes", "Canarias"), "ULPGC", "Grado en Ingeniería Informática");
+        User user = Data.loadMyUser(nickname, password);
         try {
             if(nickname.equals("ignacio") && password.equals("1234")){
                 session.setAttribute("user", user);            
