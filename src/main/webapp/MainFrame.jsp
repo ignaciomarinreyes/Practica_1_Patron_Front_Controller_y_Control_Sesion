@@ -13,7 +13,7 @@
     <body>
         <%
             if (request.getSession().getAttribute("user") == null)
-                response.sendRedirect("Login.jsp");
+                response.sendRedirect("index.jsp");
         %>
         <%@ include file="Header.html"%>    
         <%@ include file="Menu.jsp"%>    

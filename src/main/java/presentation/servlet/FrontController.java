@@ -39,13 +39,9 @@ public class FrontController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {       
-        if(isLogged(request)){
             FrontCommand command = getCommand(request);
             command.init(getServletContext(), request, response);
             command.process();
-        } else {
-            getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
-        }
     }
     
     private FrontCommand getCommand(HttpServletRequest request) {
@@ -68,11 +64,7 @@ public class FrontController extends HttpServlet {
             result = presentation.commands.Unknow.class;
         }
         return result;
-    }
-        
-    private boolean isLogged(HttpServletRequest request) {
-        return request.getSession().getAttribute("user") != null;    
-    }
+    }     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -1,27 +1,20 @@
-<html>
-    <head> 
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="template.css"/>
-        <title>UniversityBook</title> 
-    </head>
-    <body>
-        <%@ include file="Header.html"%>    
-        <div id="divlogged">
-            <form action='Login' method='POST'>
-                <div style="padding: 10px;">
-                    <span>Nombre: </span>
-                    <input type='text' name='nickname' value='ignacio'> 
-                </div>  
-                <div style="padding: 10px;">
-                    <span>Contraseña: </span>
-                    <input type='text' name='password' value='1234'> 
-                </div>  
-                <input type='hidden' name='command' value='Login'> 
-                <input style="padding: 10px;" value='Iniciar Sesión' type='submit'>
-            </form>
-        </div>   
-    </body>   
-</html>
-
-
-
+<%@page import="java.io.IOException"%>
+<%@page import="data.Data"%>
+<%@page import="business.User"%>
+<%
+        String nickname = request.getParameter("nickname");
+        String password = request.getParameter("password");
+        User user = Data.loadMyUser(nickname, password);
+        try {
+            if(nickname.equals("ignacio") && password.equals("1234")){
+                session.setAttribute("user", user);            
+                getServletContext().getRequestDispatcher("/MainFrame.jsp").forward(request, response);            
+            } else {          
+                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);            
+            }
+        } catch (ServletException ex) {
+                ex.printStackTrace();
+        } catch (IOException ex) {
+                ex.printStackTrace();
+        } 
+%>
