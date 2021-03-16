@@ -16,6 +16,7 @@
                     <span>Contraseña: </span>
                     <input type='text' name='password' value='1234'> 
                 </div>  
+                <input type='hidden' name='command' value='Login'> 
                 <input style="padding: 10px;" value='Iniciar Sesión' type='submit'>
             </form>
         </div>   

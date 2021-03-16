@@ -4,17 +4,18 @@
         <input type='hidden' name='command' value='SearchSubject'>          
         <input value='Buscar' type='submit'>
     </form>
-    <form action='LogOut' method='GET' style='float: right; margin-right: 10px;'>                          
+    <form action='FrontController' method='GET' style='float: right; margin-right: 10px;'>
+        <input type='hidden' name='command' value='Logout'>      
         <input value='Cerrar Sesión' type='submit'>
     </form> 
-    <form style='float: right; margin-right: 10px;'>                          
+    <form action='FrontController' style='float: right; margin-right: 10px;'>                          
         <input value='Configuración' type='submit'>
     </form>   
-    <form style='float: right; margin-right: 10px;'>
+    <form action='FrontController' style='float: right; margin-right: 10px;'>
         <input type='hidden' name='command' value='ShowMyPosts'>        
         <input value='Perfil' type='submit'>
     </form>
-    <form style='float: right; margin-right: 10px;'>
+    <form action='FrontController' style='float: right; margin-right: 10px;'>
         <input type='hidden' name='command' value='ShowPostsFollowedSubject'>        
         <input value='Inicio' type='submit'>
     </form> 
