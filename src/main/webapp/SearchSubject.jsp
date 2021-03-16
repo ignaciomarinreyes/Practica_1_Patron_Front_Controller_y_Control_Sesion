@@ -16,7 +16,6 @@
             <form class='formSearch' action='FrontController' method='GET'>  
                 <select name="universities">
                     <option value="ULPGC">ULPGC</option>
-                    <option value="ULL">ULL</option>
                 </select><br>
                 <select name="degrees">
                     <option value="Grado en Ingeniería Informática">Grado en Ingeniería Informática</option>
