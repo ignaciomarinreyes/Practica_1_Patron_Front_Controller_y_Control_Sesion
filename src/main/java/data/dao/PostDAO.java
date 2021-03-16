@@ -28,4 +28,15 @@ public class PostDAO {
         }
         return posts;
     }
+    
+    public List<Post> findPostBySubject(int idUniversity, int idDegree, int idSubject){
+        List<Post> posts = new ArrayList<Post>();
+        for (Post post : (ArrayList<Post>) session.getAttribute("posts")) {
+            if(post.getSubject().getUniversity().getId() == idUniversity && post.getSubject().getDegree().getId() == idDegree && post.getSubject().getId() == idSubject){
+                 posts.add(post);
+            }          
+        }
+        return posts;
+    }
+   
 }

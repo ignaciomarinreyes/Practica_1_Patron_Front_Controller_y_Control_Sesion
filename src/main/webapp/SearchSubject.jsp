@@ -1,3 +1,7 @@
+<%@page import="business.Subject"%>
+<%@page import="business.Degree"%>
+<%@page import="business.University"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,14 +19,19 @@
         <div id="centerSpace">
             <form class='formSearch' action='FrontController' method='GET'>  
                 <select name="universities">
-                    <option value="ULPGC">ULPGC</option>
+                    <%
+                        for(University university: (List<University>)session.getAttribute("universities")) out.println("<option value='" + university.getId() + "'>" + university.getName() + "</option>");
+                    %>
                 </select><br>
                 <select name="degrees">
-                    <option value="Grado en Ingeniería Informática">Grado en Ingeniería Informática</option>
+                    <%
+                        for(Degree degree :(List<Degree>)session.getAttribute("degrees")) out.println("<option value='" + degree.getId() + "'>" + degree.getName() + "</option>");
+                    %>                                   
                 </select><br>
                 <select name="subjects">
-                    <option value="Arquitectura del Sofware">Arquitectura del Software</option>
-                    <option value="Gestion del Sofware">Gestión del Sofware</option>
+                    <%
+                        for(Subject subject :(List<Subject>)session.getAttribute("subjects")) out.println("<option value='" + subject.getId() + "'>" + subject.getName() + "</option>");
+                    %> 
                 </select><br>     
                 <input type='hidden' name='command' value='ShowPostsSubject'>          
                 <input value='Buscar' type='submit'>

@@ -63,17 +63,15 @@ public class Data {
         ArrayList<University> universitiesAde = new ArrayList<University>();
         universitiesAde.add(universities.get(1));
         Degree informatica = new Degree("Grado en Ingeniería Informática", universitiesInformatica);
-        Degree ade = new Degree("Grado en Administración y Dirección de Empresas", universitiesAde);
         degrees.add(informatica);
-        degrees.add(ade);
         return degrees;
     }
     
     private static List<User> loadAllUser() {
        ArrayList<User> users = new ArrayList<User>();
        User ignacio = new User("ignacio", "1234","Ignacio", "Marín Reyes", Rol.Student, address.get(0), universities.get(0), degrees.get(0));
-       User luis = new User("luis", "1234","Luis", "Enrique Galindo",Rol.Student, address.get(1), universities.get(1), degrees.get(1));
-       User teacher = new User("Marta", "1234","Marta", "Enrique Galindo",Rol.Teacher, address.get(1), universities.get(1), degrees.get(1));
+       User luis = new User("luis", "1234","Luis", "Enrique Galindo",Rol.Student, address.get(1), universities.get(1), degrees.get(0));
+       User teacher = new User("Marta", "1234","Marta", "Enrique Galindo",Rol.Teacher, address.get(1), universities.get(1), degrees.get(0));
        User admin = new User("Admin", "1234","Admin", "Enrique Galindo",Rol.Admin, address.get(1));
        users.add(ignacio);
        users.add(luis);
@@ -87,10 +85,10 @@ public class Data {
         Set<User> usersArquitecturaSofware = new HashSet<User>();
         usersArquitecturaSofware.add(users.get(0));
         usersArquitecturaSofware.add(users.get(1));
-        Subject ArquitecturaSofware = new Subject("Arquitectura del Sofware", 4, users.get(3), usersArquitecturaSofware);
+        Subject ArquitecturaSofware = new Subject("Arquitectura del Sofware", 4, users.get(3), universities.get(0), degrees.get(0), usersArquitecturaSofware);
         Set<User> usersGestionSofware2 = new HashSet<User>();
         usersGestionSofware2.add(users.get(0));
-        Subject gestionSofware = new Subject("Gestión del Sofware 2", 4, users.get(3), usersGestionSofware2);
+        Subject gestionSofware = new Subject("Gestión del Sofware 2", 4, users.get(3),universities.get(1), degrees.get(0), usersGestionSofware2);
         
         users.get(0).addSubject(ArquitecturaSofware);
         users.get(1).addSubject(gestionSofware);
@@ -114,10 +112,15 @@ public class Data {
        Post postIgnacioArquitecturaSofware = new Post("Libro de arquitectura del Sofware", users.get(0), LocalDate.now(), "Comparto el libro de arquitectura", "images/libro1.jpeg", subjects.get(0));
        postIgnacioArquitecturaSofware.addComment(comments.get(0));
        posts.add(postIgnacioArquitecturaSofware);
-       Post postLuisArquitecturaSofware = new Post("Apuntes de arquitectura del Sofware", users.get(1), LocalDate.now(), "Comparto los apuntes de arquitectura", "images/apuntes1.jpeg", subjects.get(0));
-       posts.add(postLuisArquitecturaSofware);
-       Post postIgnacioGestionSofware = new Post("Apuntes de gestión del sofware", users.get(0), LocalDate.now(), "Comparto los apuntes de gestión del sofware", "images/apuntes1.jpeg", subjects.get(1));
-       posts.add(postIgnacioGestionSofware);
+       Post postIgnacioArquitecturaSofware2 = new Post("Apuntes de arquitectura del Sofware", users.get(0), LocalDate.now(), "Comparto los apuntes de arquitectura", "images/apuntes1.jpeg", subjects.get(0));
+       posts.add(postIgnacioArquitecturaSofware2);
+       Post postLuisoGestionSofware = new Post("Apuntes de gestión del sofware", users.get(1), LocalDate.now(), "Comparto los apuntes de gestión del sofware", "images/apuntes1.jpeg", subjects.get(1));
+       posts.add(postLuisoGestionSofware);
+       
+       users.get(0).addPost(postIgnacioArquitecturaSofware);
+       users.get(0).addPost(postIgnacioArquitecturaSofware2);
+       users.get(1).addPost(postLuisoGestionSofware);
+       
        return posts;
     }
 

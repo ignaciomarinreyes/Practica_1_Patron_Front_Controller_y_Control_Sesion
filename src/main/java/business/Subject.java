@@ -8,14 +8,18 @@ public class Subject {
     private String name;
     private int course;
     private User teacher;
+    private University university;
+    private Degree degree;
     private Set<User> students;
 
-    public Subject(String name, int course, User teacher, Set<User> students) {
+    public Subject(String name, int course, User teacher, University university, Degree degree, Set<User> students) {
         this.id = idSubject++;
         this.name = name;
         this.course = course;
         this.teacher = teacher;
         this.students = students;
+        this.university = university;
+        this.degree = degree;
     }
 
     public int getId() {
@@ -52,6 +56,14 @@ public class Subject {
 
     public void setStudents(Set<User> students) {
         this.students = students;
+    }
+
+    public University getUniversity() {
+        return university;
+    }
+
+    public Degree getDegree() {
+        return degree;
     }
 
     @Override

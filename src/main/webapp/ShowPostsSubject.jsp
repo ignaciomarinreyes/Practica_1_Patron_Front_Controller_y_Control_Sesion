@@ -1,3 +1,5 @@
+<%@page import="data.dao.PostDAO"%>
+<%@page import="java.util.List"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="business.Comment"%>
 <%@page import="business.Post"%>
@@ -5,6 +7,45 @@
 <%@ page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%!
+    public static String printPosts(List<Post> posts) {
+        String result = "";
+        for (Post post : posts) {
+            result += "<div class='post'><h1>" + post.getTitle() + "</h1>"
+                    + "<div class='tuser'><span>" + post.getUser().getName() + "</span><span> " + post.getDate() + "</span></div>"
+                    + "<p>" + post.getContent() + "</p>"
+                    + "<div class='picture'><img src='" + post.getPathImage() + "' width='40%' height='40%'></div>";
+            if (post.getLinks().size() > 0) {
+                result += "<div class='link'>";
+                for (String link : post.getLinks()) {
+                    result += "<a href='" + link + "'>Enlace</a>";
+                }
+                result += "</div>";
+            }
+            if (post.getFiles().size() > 0) {
+                result += "<div class='file'>";
+                for (String file : post.getFiles()) {
+                    result += "<a href='" + file + "'>Fichero</a>";
+                }
+                result += "</div>";
+            }
+            if (post.getComments().size() > 0) {
+                result += "<div>";
+                for (Comment comment : post.getComments()) {
+                    result += "<div class='tcomment'><span>" + comment.getUser().getName() + "</span><span> " + comment.getDate() + "</span></div>"
+                            + "<div class='comment'>" + comment.getContent() + "</div>";
+                }
+                result += "</div>";
+            }
+            result += "</div>";
+            result += "<p class='like'>Me gusta: " + post.numberLikes() + "</p>";
+        }
+        return result;
+    }
+
+%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,42 +61,8 @@
         <%@ include file="Menu.jsp"%>
         <div id="centerSpace">
             <%
-                ArrayList<Post> posts = new ArrayList<Post>();
-                if(request.getParameter("subjects").equalsIgnoreCase("Arquitectura del Sofware")){
-                    posts = Data.loadPostsArquitecturaSofware();      
-                } else if(request.getParameter("subjects").equalsIgnoreCase("Gestion del Sofware")){
-                   posts = Data.loadPostsGestionSofware();  
-                } 
-                for (Post post : posts) {
-                    out.println("<div class='post'><h1>" + post.getTitle() + "</h1>"
-                            + "<div class='tuser'><span>" + post.getUser().getName() + "</span><span> " + post.getDate() + "</span></div>"
-                            + "<p>" + post.getContent() + "</p>"
-                            + "<div class='picture'><img src='" + post.getPathImage() + "' width='40%' height='40%'></div>");
-                    if (post.getLinks().size() > 0) {
-                        out.println("<div class='link'>");
-                        for (String link : post.getLinks()) {
-                            out.println("<a href='" + link + "'>Enlace</a>");
-                        }
-                        out.println("</div>");
-                    }
-                    if(post.getFiles().size() > 0) {
-                        out.println("<div class='file'>");
-                        for (String file : post.getFiles()) {
-                            out.println("<a href='" + file + "'>Fichero</a>");
-                        }
-                        out.println("</div>");
-                    }
-                    if(post.getComments().size() > 0) {
-                        out.println("<div>");
-                        for (Comment comment : post.getComments()) {
-                            out.println("<div class='tcomment'><span>" + comment.getUser().getName() + "</span><span> " + comment.getDate() + "</span></div>"
-                                    + "<div class='comment'>" + comment.getContent() + "</div>");
-                        }
-                        out.println("</div>");
-                    }
-                    out.println("</div>");
-                    out.println("<p class='like'>Me gusta: " + post.getNumberLikes() + "</p>");
-                }             
+                PostDAO postDAO = new PostDAO(request);
+                out.println(printPosts(postDAO.findPostBySubject(Integer.parseInt(request.getParameter("universities")), Integer.parseInt(request.getParameter("degrees")), Integer.parseInt(request.getParameter("subjects")))));                          
             %>
         </div>
         <%@ include file="Footer.html"%> 
