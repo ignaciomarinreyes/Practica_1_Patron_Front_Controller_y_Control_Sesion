@@ -3,26 +3,33 @@ package business;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Post {
+    private static int idPost = 0;
+    private int id;
     private String title;
     private User user;
     private LocalDate date;
     private String content;
     private String pathImage;
-    private int numberLikes;
+    private Set<User> likes;
     private List<Comment> comments;
     private List<String> files;
     private List<String> links;
+    private Subject subject;
 
-    public Post(String title, User user, LocalDate date, String content, String pathImage) {
+    public Post(String title, User user, LocalDate date, String content, String pathImage, Subject subject) {
+        this.id = idPost++;
         this.title = title;
         this.user = user;
         this.date = date;
         this.content = content;
         this.pathImage = pathImage;
-        this.numberLikes = 0;
+        this.subject = subject;
+        this.likes = new HashSet<User>();
         this.comments = new ArrayList<Comment>();
         this.files = new ArrayList<String>();
         this.links = new ArrayList<String>();
@@ -68,13 +75,10 @@ public class Post {
         this.pathImage = pathImage;
     }
 
-    public int getNumberLikes() {
-        return numberLikes;
+    public int getId() {
+        return id;
     }
 
-    public void setNumberLikes(int numberLikes) {
-        this.numberLikes = numberLikes;
-    }
 
     public List<Comment> getComments() {
         return comments;
@@ -100,8 +104,21 @@ public class Post {
         links.add(link);
     }
     
-    public void addLike(){
-        numberLikes++;
+    public void addLike(User user){
+        likes.add(user);
     }
     
+    public int numberLikes(){
+        return likes.size();
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" + "id=" + id + ", title=" + title + ", user=" + user + ", date=" + date + ", content=" + content + ", pathImage=" + pathImage + '}';
+    }
+   
 }

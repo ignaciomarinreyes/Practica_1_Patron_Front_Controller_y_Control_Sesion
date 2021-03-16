@@ -1,5 +1,5 @@
 
-package presentation.commands;
+package controller.commands;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;

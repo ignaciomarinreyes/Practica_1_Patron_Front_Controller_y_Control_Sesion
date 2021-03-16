@@ -2,84 +2,150 @@ package data;
 
 import business.Address;
 import business.Comment;
+import business.Degree;
 import business.Post;
 import business.Rol;
+import business.Subject;
+import business.University;
 import business.User;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Data {
+
+    private static List<User> users;
+    private static List<Address> address;
+    private static List<University> universities;
+    private static List<Degree> degrees;
+    private static List<Subject> subjects;
+    private static List<Comment> comments;
+    private static List<Post> posts;
     
-    public static ArrayList<Post> loadMyPosts() {
-        ArrayList<Post> posts = new ArrayList<Post>();
-        User userIgnacio = new User("ignacio", "123","Ignacio", "Marín Reyes",Rol.Student, new Address("Polizón", "24", "35118", "Agüimes", "Canarias"), "ULPGC", "Grado en Ingeniería Informática");
-        User userLuis = new User("luis", "123","Luis", "Marín Reyes",Rol.Student, new Address("Polizón", "24", "35118", "Agüimes", "Canarias"), "ULPGC", "Grado en Ingeniería Informática");
-        Post post1 = new Post("Libro de arquitectura del sofware", userIgnacio, LocalDate.now(), "Comparto el libro de patrones de diseño, muy útil", "images/libro1.jpeg");
-        post1.addComment(new Comment(userLuis, "Buen aporte", LocalDate.now()));
-        post1.addComment(new Comment(userIgnacio, "De gran utilidad", LocalDate.now()));
-        post1.addLike();
-        posts.add(post1);
-        
-        return posts;
-    }
-
-    public static ArrayList<Post> loadPostsArquitecturaSofware() {
-        ArrayList<Post> posts = new ArrayList<Post>();
-        User userIgnacio = new User("ignacio", "123","Ignacio", "Marín Reyes",Rol.Student, new Address("Polizón", "24", "35118", "Agüimes", "Canarias"), "ULPGC", "Grado en Ingeniería Informática");
-        User userLuis = new User("luis", "123","Luis", "Marín Reyes",Rol.Student, new Address("Polizón", "24", "35118", "Agüimes", "Canarias"), "ULPGC", "Grado en Ingeniería Informática");
-        Post post1 = new Post("Libro de arquitectura del sofware", userIgnacio, LocalDate.now(), "Comparto el libro de patrones de diseño, muy útil", "images/libro1.jpeg");
-        post1.addComment(new Comment(userLuis, "Buen aporte", LocalDate.now()));
-        post1.addComment(new Comment(userIgnacio, "De gran utilidad", LocalDate.now()));
-        post1.addLike();
-        posts.add(post1);
-
-        Post post2 = new Post("Apuntes de arquitectura del sofware", userLuis, LocalDate.now(), "Comparto unos apuntes propios de la asignatura", "images/apuntes1.jpeg");
-        post2.addComment(new Comment(userLuis, "Están bastante bien los apuntes", LocalDate.now()));
-        post2.addFile("pdf/pdf1.pdf");
-        post2.addLink("https://es.wikipedia.org/wiki/Arquitectura_de_software");
-        posts.add(post2);
-        return posts;
+    public static void loadDefaultData(){
+        address = loadAllAddress();
+        universities = loadAllUniversities();
+        degrees = loadAllDegrees();      
+        users = loadAllUser();     
+        subjects = loadAllSubjects();
+        comments = loadAllComments();
+        posts = loadAllPost();
     }
     
-    public static ArrayList<Post> loadPostsGestionSofware() {     
-        ArrayList<Post> posts = new ArrayList<Post>();
-        User userLuis = new User("luis", "123","Luis", "Marín Reyes",Rol.Student, new Address("Polizón", "24", "35118", "Agüimes", "Canarias"), "ULPGC", "Grado en Ingeniería Informática");
-        User userIgnacio = new User("ignacio", "123","Ignacio", "Marín Reyes",Rol.Student, new Address("Polizón", "24", "35118", "Agüimes", "Canarias"), "ULPGC", "Grado en Ingeniería Informática");
-        Post post0 = new Post("Apuntes de gestión del sofware 2", userLuis, LocalDate.now(), "Comparto unos apuntes propios de la asignatura", "images/apuntes1.jpeg");
-        post0.addComment(new Comment(userIgnacio, "Están bastante bien los apuntes", LocalDate.now()));
-        post0.addLink("https://onerp.es/que-es-un-software-de-gestion");
-        post0.addFile("pdf/pdf2.pdf");
-        posts.add(post0);
-        
-         return posts;
-    }
-
-    public static User loadMyUser(String nickname, String password) {
-        return new User(nickname, password,"Ignacio", "Marín Reyes",Rol.Student, new Address("Polizón", "24", "35118", "Agüimes", "Canarias"), "ULPGC", "Grado en Ingeniería Informática");
+    private static List<Address> loadAllAddress() {
+        ArrayList<Address> address = new ArrayList<Address>();
+        Address ignacioAddress = new Address("Polizón", "24", "35118", "Agüimes", "Canarias");
+        Address luisAddress = new Address("Colon", "25", "35119", "Arinaga", "Canarias");
+        Address ulpcAddress = new Address("Un misterio", "25", "35119", "Tafira", "Canarias");
+        Address ullAddress = new Address("Un misterio", "25", "35119", "La laguna", "Canarias");
+        address.add(ignacioAddress);
+        address.add(luisAddress);
+        address.add(ulpcAddress);
+        address.add(ullAddress);
+        return address;
     }
     
-    public static ArrayList<Post> loadPostsFollowedSubject() {     
-          User userLuis = new User("luis", "123","Luis", "Marín Reyes",Rol.Student, new Address("Polizón", "24", "35118", "Agüimes", "Canarias"), "ULPGC", "Grado en Ingeniería Informática");
-        User userIgnacio = new User("ignacio", "123","Ignacio", "Marín Reyes",Rol.Student, new Address("Polizón", "24", "35118", "Agüimes", "Canarias"), "ULPGC", "Grado en Ingeniería Informática");
-        ArrayList<Post> posts = new ArrayList<Post>();
-        
-        Post post0 = new Post("Apuntes de gestión del sofware 2", userLuis, LocalDate.now(), "Comparto unos apuntes propios de la asignatura", "images/apuntes1.jpeg");
-        post0.addComment(new Comment(userIgnacio, "Están bastante bien los apuntes", LocalDate.now()));
-        post0.addLink("https://onerp.es/que-es-un-software-de-gestion");
-        post0.addFile("pdf/pdf2.pdf");
-        posts.add(post0);
-        
-        Post post1 = new Post("Libro de arquitectura del sofware", userIgnacio, LocalDate.now(), "Comparto el libro de patrones de diseño, muy útil", "images/libro1.jpeg");
-        post1.addComment(new Comment(userLuis, "Buen aporte", LocalDate.now()));
-        post1.addComment(new Comment(userLuis, "De gran utilidad", LocalDate.now()));
-        post1.addLike();
-        posts.add(post1);
+    private static List<University> loadAllUniversities() {
+        ArrayList<University> universities = new ArrayList<University>();
+        University ulpgc = new University("ULPGC", address.get(2));
+        University ull = new University("ULL", address.get(3));
+        universities.add(ulpgc);
+        universities.add(ull);
+        return universities;
+    }
+    
+    private static List<Degree> loadAllDegrees() {
+        ArrayList<Degree> degrees = new ArrayList<Degree>();
+        ArrayList<University> universitiesInformatica = new ArrayList<University>();
+        universitiesInformatica.add(universities.get(0));
+        ArrayList<University> universitiesAde = new ArrayList<University>();
+        universitiesAde.add(universities.get(1));
+        Degree informatica = new Degree("Grado en Ingeniería Informática", universitiesInformatica);
+        Degree ade = new Degree("Grado en Administración y Dirección de Empresas", universitiesAde);
+        degrees.add(informatica);
+        degrees.add(ade);
+        return degrees;
+    }
+    
+    private static List<User> loadAllUser() {
+       ArrayList<User> users = new ArrayList<User>();
+       User ignacio = new User("ignacio", "1234","Ignacio", "Marín Reyes", Rol.Student, address.get(0), universities.get(0), degrees.get(0));
+       User luis = new User("luis", "1234","Luis", "Enrique Galindo",Rol.Student, address.get(1), universities.get(1), degrees.get(1));
+       User teacher = new User("Marta", "1234","Marta", "Enrique Galindo",Rol.Teacher, address.get(1), universities.get(1), degrees.get(1));
+       User admin = new User("Admin", "1234","Admin", "Enrique Galindo",Rol.Admin, address.get(1));
+       users.add(ignacio);
+       users.add(luis);
+       users.add(teacher);
+       users.add(admin);
+       return users;
+    }
 
-        Post post2 = new Post("Apuntes de arquitectura del sofware", userLuis, LocalDate.now(), "Comparto unos apuntes propios de la asignatura", "images/apuntes1.jpeg");
-        post2.addComment(new Comment(userIgnacio, "Están bastante bien los apuntes", LocalDate.now()));
-        post2.addFile("pdf/pdf1.pdf");
-        post2.addLink("https://es.wikipedia.org/wiki/Arquitectura_de_software");
-        posts.add(post2);
+    private static List<Subject> loadAllSubjects() {
+        ArrayList<Subject> subjects = new ArrayList<Subject>();
+        Set<User> usersArquitecturaSofware = new HashSet<User>();
+        usersArquitecturaSofware.add(users.get(0));
+        usersArquitecturaSofware.add(users.get(1));
+        Subject ArquitecturaSofware = new Subject("Arquitectura del Sofware", 4, users.get(3), usersArquitecturaSofware);
+        Set<User> usersGestionSofware2 = new HashSet<User>();
+        usersGestionSofware2.add(users.get(0));
+        Subject gestionSofware = new Subject("Gestión del Sofware 2", 4, users.get(3), usersGestionSofware2);
+        
+        users.get(0).addSubject(ArquitecturaSofware);
+        users.get(1).addSubject(gestionSofware);
+        
+        subjects.add(ArquitecturaSofware);
+        subjects.add(gestionSofware);
+        return subjects;
+    }
+    
+    private static List<Comment> loadAllComments() {
+        ArrayList<Comment> comments = new ArrayList<Comment>();
+        Comment ignacioCommentArquitectura = new Comment(users.get(0), "Buen aporte", LocalDate.now());
+        Comment luisCommentGestionSofware = new Comment(users.get(1), "Espectacular", LocalDate.now());
+        comments.add(ignacioCommentArquitectura);
+        comments.add(luisCommentGestionSofware);
+        return comments;
+    }
+
+    private static List<Post> loadAllPost() {
+       ArrayList<Post> posts = new ArrayList<Post>();
+       Post postIgnacioArquitecturaSofware = new Post("Libro de arquitectura del Sofware", users.get(0), LocalDate.now(), "Comparto el libro de arquitectura", "images/libro1.jpeg", subjects.get(0));
+       postIgnacioArquitecturaSofware.addComment(comments.get(0));
+       posts.add(postIgnacioArquitecturaSofware);
+       Post postLuisArquitecturaSofware = new Post("Apuntes de arquitectura del Sofware", users.get(1), LocalDate.now(), "Comparto los apuntes de arquitectura", "images/apuntes1.jpeg", subjects.get(0));
+       posts.add(postLuisArquitecturaSofware);
+       Post postIgnacioGestionSofware = new Post("Apuntes de gestión del sofware", users.get(0), LocalDate.now(), "Comparto los apuntes de gestión del sofware", "images/apuntes1.jpeg", subjects.get(1));
+       posts.add(postIgnacioGestionSofware);
+       return posts;
+    }
+
+    public static List<User> getUsers() {
+        return users;
+    }
+
+    public static List<Address> getAddress() {
+        return address;
+    }
+
+    public static List<University> getUniversities() {
+        return universities;
+    }
+
+    public static List<Degree> getDegrees() {
+        return degrees;
+    }
+
+    public static List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public static List<Comment> getComments() {
+        return comments;
+    }
+
+    public static List<Post> getPosts() {
         return posts;
     }
        

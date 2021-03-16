@@ -1,5 +1,5 @@
 
-package presentation.commands;
+package controller.commands;
 
 public class ShowPostsSubject extends FrontCommand{
 

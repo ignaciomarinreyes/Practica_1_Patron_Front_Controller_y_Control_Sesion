@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package presentation.servlet;
+package controller.servlet;
 
 import business.Comment;
 import business.Post;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import presentation.commands.FrontCommand;
+import controller.commands.FrontCommand;
 
 /**
  *
@@ -57,11 +57,11 @@ public class FrontController extends HttpServlet {
     
         private Class getCommandClass(HttpServletRequest request) {
         Class result = null;
-        final String command = "presentation.commands." + (String) request.getParameter("command");
+        final String command = "controller.commands." + (String) request.getParameter("command");
         try{
             result = Class.forName(command);
         } catch(ClassNotFoundException e){
-            result = presentation.commands.Unknow.class;
+            result = controller.commands.Unknow.class;
         }
         return result;
     }     

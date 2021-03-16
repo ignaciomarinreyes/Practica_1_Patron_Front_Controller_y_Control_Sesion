@@ -1,6 +1,8 @@
 package business;
 
 public class Address {
+    private static int idAddress = 0;
+    private int id;
     private String street;
     private String number;
     private String cp;
@@ -8,6 +10,7 @@ public class Address {
     private String autonomousCommunity;
 
     public Address(String street, String number, String cp, String locality, String autonomousCommunity) {
+        this.id = idAddress++;
         this.street = street;
         this.number = number;
         this.cp = cp;
@@ -15,6 +18,10 @@ public class Address {
         this.autonomousCommunity = autonomousCommunity;
     }
 
+    public int getId() {
+        return id;
+    }
+ 
     public String getStreet() {
         return street;
     }

@@ -1,12 +1,12 @@
+<%@page import="data.dao.UserDAO"%>
 <%@page import="java.io.IOException"%>
 <%@page import="data.Data"%>
 <%@page import="business.User"%>
 <%
-        String nickname = request.getParameter("nickname");
-        String password = request.getParameter("password");
-        User user = Data.loadMyUser(nickname, password);
+        UserDAO userDAO = new UserDAO(request);
+        User user = userDAO.findByNickname_And_Password(request.getParameter("nickname"),request.getParameter("password"));
         try {
-            if(nickname.equals("ignacio") && password.equals("1234")){
+            if(user != null){
                 session.setAttribute("user", user);            
                 getServletContext().getRequestDispatcher("/MainFrame.jsp").forward(request, response);            
             } else {          
