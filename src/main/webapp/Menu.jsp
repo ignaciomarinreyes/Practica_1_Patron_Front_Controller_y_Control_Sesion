@@ -1,3 +1,4 @@
+<%@page import="business.Rol"%>
 <%@page import="business.User"%>
 <div id="menu">
     <form action='FrontController' method='GET' style='float: left; margin-left: 10px;'>                 
@@ -26,6 +27,15 @@
     <form action='Publish.jsp' style='float: right; margin-right: 10px;'>
          <input type='hidden' id='subjects' name='subject' value='<%= request.getParameter("subjects") %>'>  
         <input value='Publicar' type='submit'>
+    </form> 
+    <%
+        }
+    %>
+    <%
+        if(((User) session.getAttribute("user")).getRol().equals(Rol.Admin)){
+    %>
+    <form action='ControlPanel.jsp' style='float: right; margin-right: 10px;'>
+        <input value='Administrador' type='submit'>
     </form> 
     <%
         }

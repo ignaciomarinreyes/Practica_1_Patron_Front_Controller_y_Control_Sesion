@@ -19,6 +19,7 @@ public class PostDAO {
 
     public List<Post> findAllPostsFollowedSubjectsByUser(User userSesion) {
         List<Post> posts = new ArrayList<Post>();
+        System.out.println(userSesion);
         for (Post post : (ArrayList<Post>) session.getAttribute("posts")) {
             for (Subject subjectUserSession : userSesion.getSubjects()) {
                 if (post.getSubject().equals(subjectUserSession)) {

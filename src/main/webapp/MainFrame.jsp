@@ -54,12 +54,7 @@
         <link rel="stylesheet" type="text/css" href="template.css"/>
     </head>
     <body>
-        <%
-            if (request.getSession().getAttribute("user") == null) {
-                response.sendRedirect("index.jsp");
-            } 
-        %>
-        <%@ include file="Header.html"%>    
+        <%@ include file="Header.jsp"%>    
         <%@ include file="Menu.jsp"%>    
         <div id="centerSpace">
             <%                   

@@ -61,5 +61,10 @@ public class Address {
     public void setAutonomousCommunity(String autonomousCommunity) {
         this.autonomousCommunity = autonomousCommunity;
     }
+
+    @Override
+    public String toString() {
+        return street + ", " + number + ", " + cp + ", " + locality + ", " + autonomousCommunity;
+    } 
   
 }

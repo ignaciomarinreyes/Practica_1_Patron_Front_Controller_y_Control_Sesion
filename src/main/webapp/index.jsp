@@ -5,7 +5,7 @@
         <title>UniversityBook</title> 
     </head>
     <body>
-        <%@ include file="Header.html"%>    
+        <header id="title"><a style="color: black; text-decoration: none;" href="MainFrame.jsp">UniversityBook</a></header> 
         <div id="divlogged">
             <form action='FrontController' method='POST'>
                 <div style="padding: 10px;">

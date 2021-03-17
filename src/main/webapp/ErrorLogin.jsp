@@ -8,7 +8,7 @@
         <title>ErrorLogin</title>
     </head>
     <body>
-        <%@ include file="Header.html"%>     
+        <%@ include file="Header.jsp"%>     
         <h1 style='text-align: center;'>
             Mensaje de error
         </h1>

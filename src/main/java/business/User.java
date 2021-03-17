@@ -40,6 +40,7 @@ public class User {
         this.surname = surname;
         this.rol = rol;
         this.address = address;
+        this.subjects = new HashSet<Subject>();
     }
 
     public Set<Subject> getSubjects() {

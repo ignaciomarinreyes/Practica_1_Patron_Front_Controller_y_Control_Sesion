@@ -72,7 +72,7 @@ public class Data {
        User ignacio = new User("ignacio", "1234","Ignacio", "Marín Reyes", Rol.Student, address.get(0), universities.get(0), degrees.get(0));
        User luis = new User("luis", "1234","Luis", "Enrique Galindo",Rol.Student, address.get(1), universities.get(1), degrees.get(0));
        User teacher = new User("Marta", "1234","Marta", "Enrique Galindo",Rol.Teacher, address.get(1), universities.get(1), degrees.get(0));
-       User admin = new User("Admin", "1234","Admin", "Enrique Galindo",Rol.Admin, address.get(1));
+       User admin = new User("admin", "1234","admin", "Enrique Galindo",Rol.Admin, address.get(1));
        users.add(ignacio);
        users.add(luis);
        users.add(teacher);
