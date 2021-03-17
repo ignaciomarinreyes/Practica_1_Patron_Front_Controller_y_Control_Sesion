@@ -1,9 +1,7 @@
-<%@page import="data.dao.PostDAO"%>
+<%@page import="business.Comment"%>
 <%@page import="java.util.List"%>
 <%@page import="java.time.LocalDate"%>
-<%@page import="business.Comment"%>
 <%@page import="business.Post"%>
-<%@page import="data.Data"%>
 <%@ page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -60,9 +58,8 @@
         <%@ include file="Header.html"%>    
         <%@ include file="Menu.jsp"%>
         <div id="centerSpace">
-            <%
-                PostDAO postDAO = new PostDAO(request);
-                out.println(printPosts(postDAO.findPostBySubject(Integer.parseInt(request.getParameter("universities")), Integer.parseInt(request.getParameter("degrees")), Integer.parseInt(request.getParameter("subjects")))));                          
+            <%        
+                out.println(printPosts((List<Post>)request.getAttribute("PostBySubject")));                          
             %>
         </div>
         <%@ include file="Footer.html"%> 

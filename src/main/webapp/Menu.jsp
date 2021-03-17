@@ -8,7 +8,8 @@
         <input type='hidden' name='command' value='Logout'>      
         <input value='Cerrar Sesión' type='submit'>
     </form> 
-    <form action='FrontController' style='float: right; margin-right: 10px;'>                          
+    <form action='FrontController' style='float: right; margin-right: 10px;'> 
+        <input type='hidden' name='command' value='Configuracion'>   
         <input value='Configuración' type='submit'>
     </form>   
     <form action='FrontController' style='float: right; margin-right: 10px;'>

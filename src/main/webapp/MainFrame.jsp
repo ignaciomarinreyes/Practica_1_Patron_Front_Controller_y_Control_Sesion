@@ -60,9 +60,8 @@
         <%@ include file="Header.html"%>    
         <%@ include file="Menu.jsp"%>    
         <div id="centerSpace">
-            <%      
-                PostDAO postDAO = new PostDAO(request);
-                out.println(printPosts(postDAO.findAllPostsFollowedSubjectsByUser((User) session.getAttribute("user"))));
+            <%                   
+                out.println(printPosts((List<Post>)request.getAttribute("PostsFollowedSubjectsByUser")));
             %>
         </div>
         <%@ include file="Footer.html"%> 

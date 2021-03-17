@@ -3,6 +3,7 @@ package controller.commands;
 
 import business.User;
 import data.Data;
+import data.dao.PostDAO;
 import data.dao.UserDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,7 +12,7 @@ public class Login extends FrontCommand{
 
     @Override
     public void process() {
-        loadData();
+        loadData(); 
         login();
     }
 
@@ -20,6 +21,8 @@ public class Login extends FrontCommand{
         User user = userDAO.findByNickname_And_Password(request.getParameter("nickname"),request.getParameter("password"));
         if(user != null){
             request.getSession().setAttribute("user", user);
+            PostDAO postDAO = new PostDAO(request);
+            request.setAttribute("PostsFollowedSubjectsByUser", postDAO.findAllPostsFollowedSubjectsByUser((User) request.getSession().getAttribute("user")));      
             forward("/MainFrame.jsp");
         } else {
             forward("/index.jsp");

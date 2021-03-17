@@ -91,7 +91,8 @@ public class Data {
         Subject gestionSofware = new Subject("Gestión del Sofware 2", 4, users.get(3),universities.get(1), degrees.get(0), usersGestionSofware2);
         
         users.get(0).addSubject(ArquitecturaSofware);
-        users.get(1).addSubject(gestionSofware);
+        users.get(1).addSubject(ArquitecturaSofware);
+        users.get(0).addSubject(gestionSofware);
         
         subjects.add(ArquitecturaSofware);
         subjects.add(gestionSofware);

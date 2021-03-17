@@ -60,7 +60,7 @@
         <%@ include file="Menu.jsp"%>    
         <div id="centerSpace">
              <%                  
-                out.println(printPosts(((User) session.getAttribute("user")).getPosts()));          
+                out.println(printPosts((List<Post>)request.getAttribute("postsMYUser")));          
             %>
         </div>
         <%@ include file="Footer.html"%> 
