@@ -12,8 +12,10 @@
         for (Post post : posts) {
             result += "<div class='post'><h1>" + post.getTitle() + "</h1>"
                     + "<div class='tuser'><span>" + post.getUser().getName() + "</span><span> " + post.getDate() + "</span></div>"
-                    + "<p>" + post.getContent() + "</p>"
-                    + "<div class='picture'><img src='" + post.getPathImage() + "' width='40%' height='40%'></div>";
+                    + "<p>" + post.getContent() + "</p>";
+            if (post.getPathImage() != null) {
+                result += "<div class='picture'><img src='" + post.getPathImage() + "' width='40%' height='40%'></div>";
+            }
             if (post.getLinks().size() > 0) {
                 result += "<div class='link'>";
                 for (String link : post.getLinks()) {
