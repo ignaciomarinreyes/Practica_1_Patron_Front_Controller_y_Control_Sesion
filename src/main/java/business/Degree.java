@@ -1,12 +1,17 @@
 package business;
 
 import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class Degree {
     private static int idDegree = 0;
     private int id;
     private String name;
     private List<University> university;
+
+    public Degree() {
+    }
 
     public Degree(String name, List<University> university) {
         this.id = idDegree++;

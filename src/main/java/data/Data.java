@@ -62,7 +62,7 @@ public class Data {
         universitiesInformatica.add(universities.get(0));
         ArrayList<University> universitiesAde = new ArrayList<University>();
         universitiesAde.add(universities.get(1));
-        Degree informatica = new Degree("Grado en Ingeniería Informática", universitiesInformatica);
+        Degree informatica = new Degree("Grado en Ingenieria Informatica", universitiesInformatica);
         degrees.add(informatica);
         return degrees;
     }
