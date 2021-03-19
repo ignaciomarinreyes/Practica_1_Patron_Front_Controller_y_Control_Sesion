@@ -1,6 +1,7 @@
 
 import business.Degree;
 import data.Data;
+import java.io.File;
 import java.io.PrintWriter;
 import java.util.List;
 import util.XsltProcessor;
@@ -17,7 +18,7 @@ import util.XsltProcessor;
  */
 public class Main {
     public static void main(String args[]) {
-        XsltProcessor s = new XsltProcessor("", "");
-        System.out.println(s.readFile());
+
+    System.out.println(new File("src/main/java/xsl/degree.xsl").getAbsolutePath());
     }
 }

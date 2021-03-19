@@ -8,7 +8,7 @@
         <input value='Inicio' type='submit'>
     </form>  
     <form action='FrontController' style='float: left; margin-right: 10px;'>
-        <input type='hidden' name='command' value='UniversityCommand'>        
+        <input type='hidden' name='command' value='ShowUniversities'>        
         <input value='Universities' type='submit'>
     </form>  
     <form action='FrontController' style='float: left; margin-right: 10px;'>

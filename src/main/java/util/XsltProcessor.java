@@ -65,7 +65,8 @@ public class XsltProcessor {
         OutputStream htmlFile = null;
         try {
             TransformerFactory tFactory = TransformerFactory.newInstance();
-            Source xslDoc = new StreamSource("/Users/ignacio/GoogleDrive/Ingenieria_informatica/4_2/Arquitectura_sofware/Entregas_del_proyecto/Practica_1_Patron_Front_Controller_y_Control_Sesion/UniversityBook/src/main/java/xsl/second.xsl");
+            //Source xslDoc = new StreamSource("/Users/ignacio/GoogleDrive/Ingenieria_informatica/4_2/Arquitectura_sofware/Entregas_del_proyecto/Practica_1_Patron_Front_Controller_y_Control_Sesion/UniversityBook/src/main/java/xsl/second_1.xsl");
+            Source xslDoc = new StreamSource("/Users/ignacio/GoogleDrive/Ingenieria_informatica/4_2/Arquitectura_sofware/Entregas_del_proyecto/Practica_1_Patron_Front_Controller_y_Control_Sesion/UniversityBook/src/main/java/xsl/second_2.xsl");
             Source xmlDoc = new StreamSource("/Users/ignacio/GoogleDrive/Ingenieria_informatica/4_2/Arquitectura_sofware/Entregas_del_proyecto/Practica_1_Patron_Front_Controller_y_Control_Sesion/UniversityBook/src/main/java/xml/degree_1.xml");
             String outputFileName = "/Users/ignacio/GoogleDrive/Ingenieria_informatica/4_2/Arquitectura_sofware/Entregas_del_proyecto/Practica_1_Patron_Front_Controller_y_Control_Sesion/UniversityBook/src/main/java/xml/degree_2.xml";
             htmlFile = new FileOutputStream(outputFileName);
@@ -113,15 +114,3 @@ public class XsltProcessor {
         return result;
     }
 }
-
-/*
- TransformerFactory factory = TransformerFactory.newInstance();
-            StreamSource xsl = new StreamSource(new File("/Users/ignacio/GoogleDrive/Ingenieria_informatica/4_2/Arquitectura_sofware/Entregas_del_proyecto/Practica_1_Patron_Front_Controller_y_Control_Sesion/UniversityBook/src/main/java/xsl/degree.xsl"));
-            Transformer newTransformer = factory.newTransformer(xsl);
-            
-            StreamSource xml = new StreamSource(new File("Alumnos.xml"));
-            PrintWriter writer = response.getWriter();
-            Result result = new StreamResult(writer);
-            newTransformer.transform(xml, result);
-            
- */

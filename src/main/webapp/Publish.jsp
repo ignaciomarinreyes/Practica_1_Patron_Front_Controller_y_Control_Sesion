@@ -11,16 +11,10 @@
         <%@ include file="Menu.jsp"%>    
         <div id="centerSpace">
             <form action='FrontController' method='GET'>
-                <ul>
-                    <li>
-                        <label for="title">Título: </label>
-                        <input type="text" id="title" name="title">
-                    </li>
-                    <li>
-                        <label for="content">Mensaje:</label>
-                        <input type="text" id="content" name="content">
-                    </li>                  
-                </ul>
+                        <p>Título: </p>
+                        <input type="text" name="title"><br>
+                        <p>Mensaje:</p>
+                        <textarea name="content" rows="4" cols="50"></textarea><br>
                 <button type="submit">Publicar</button>
                 <input type='hidden' id='subjects' name='subject' value='<%= request.getParameter("subject") %>'>   
                 <input type='hidden' name='command' value='Publish'>  
