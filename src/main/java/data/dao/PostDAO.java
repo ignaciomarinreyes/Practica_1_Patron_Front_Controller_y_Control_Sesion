@@ -11,16 +11,9 @@ import javax.servlet.http.HttpSession;
 
 public class PostDAO {
 
-    private HttpSession session;
-
-    public PostDAO(HttpServletRequest request) {
-        this.session = request.getSession();
-    }
-
-    public List<Post> findAllPostsFollowedSubjectsByUser(User userSesion) {
+    public static List<Post> findAllPostsFollowedSubjectsByUser(User userSesion) {
         List<Post> posts = new ArrayList<Post>();
-        System.out.println(userSesion);
-        for (Post post : (ArrayList<Post>) session.getAttribute("posts")) {
+        for (Post post : Data.getPosts()) {
             for (Subject subjectUserSession : userSesion.getSubjects()) {
                 if (post.getSubject().equals(subjectUserSession)) {
                     posts.add(post);
@@ -30,12 +23,22 @@ public class PostDAO {
         return posts;
     }
     
-    public List<Post> findPostBySubject(int idUniversity, int idDegree, int idSubject){
+    public static List<Post> findPostBySubject(int idUniversity, int idDegree, int idSubject){
         List<Post> posts = new ArrayList<Post>();
-        for (Post post : (ArrayList<Post>) session.getAttribute("posts")) {
+        for (Post post : (ArrayList<Post>) Data.getPosts()) {
             if(post.getSubject().getUniversity().getId() == idUniversity && post.getSubject().getDegree().getId() == idDegree && post.getSubject().getId() == idSubject){
                  posts.add(post);
             }          
+        }
+        return posts;
+    }
+
+    public static List<Post> findPostByUser(User user) {
+        List<Post> posts = new ArrayList<Post>();
+        for (Post post : (ArrayList<Post>) Data.getPosts()) {
+           if(post.getUser().equals(user)){
+               posts.add(post);
+           }          
         }
         return posts;
     }

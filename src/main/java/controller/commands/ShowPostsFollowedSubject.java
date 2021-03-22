@@ -10,8 +10,7 @@ public class ShowPostsFollowedSubject extends FrontCommand{
 
     @Override
     public void process() {
-        PostDAO postDAO = new PostDAO(request);
-        request.setAttribute("PostsFollowedSubjectsByUser", postDAO.findAllPostsFollowedSubjectsByUser((User) request.getSession().getAttribute("user")));  
+        request.setAttribute("PostsFollowedSubjectsByUser", PostDAO.findAllPostsFollowedSubjectsByUser((User) request.getSession().getAttribute("user")));  
         forward("/MainFrame.jsp");
     }
     

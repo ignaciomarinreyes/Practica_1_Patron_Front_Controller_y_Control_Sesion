@@ -21,8 +21,7 @@ public class Login extends FrontCommand{
         User user = userDAO.findByNickname_And_Password(request.getParameter("nickname"),request.getParameter("password"));
         if(user != null){
             request.getSession().setAttribute("user", user);
-            PostDAO postDAO = new PostDAO(request);
-            request.setAttribute("PostsFollowedSubjectsByUser", postDAO.findAllPostsFollowedSubjectsByUser((User) request.getSession().getAttribute("user")));      
+            request.setAttribute("PostsFollowedSubjectsByUser", PostDAO.findAllPostsFollowedSubjectsByUser((User) request.getSession().getAttribute("user")));      
             forward("/MainFrame.jsp");
         } else {
             forward("/index.jsp");
@@ -33,8 +32,6 @@ public class Login extends FrontCommand{
         Data.loadDefaultData();
         request.getSession().setAttribute("address", Data.getAddress());
         request.getSession().setAttribute("comments", Data.getComments());
-        request.getSession().setAttribute("degrees", Data.getDegrees());
-        request.getSession().setAttribute("posts", Data.getPosts());
         request.getSession().setAttribute("subjects", Data.getSubjects());
         request.getSession().setAttribute("universities", Data.getUniversities());
         request.getSession().setAttribute("users", Data.getUsers());   

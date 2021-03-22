@@ -152,5 +152,9 @@ public class Data {
     public static List<Post> getPosts() {
         return posts;
     }
+    
+    public static void add(Post post){
+        posts.add(post);
+    }
        
 }

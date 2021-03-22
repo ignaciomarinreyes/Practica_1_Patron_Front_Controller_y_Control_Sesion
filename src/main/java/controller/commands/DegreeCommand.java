@@ -2,6 +2,7 @@ package controller.commands;
 
 import business.Degree;
 import business.University;
+import data.Data;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -15,13 +16,15 @@ public class DegreeCommand extends FrontCommand {
     public void process() {
         PrintWriter out = null;
         try {
-            List<Degree> degrees = (List<Degree>) request.getSession().getAttribute("degrees");
-            XsltProcessor processor = new XsltProcessor("degree.xsl", "second.xsl");
-            util.ConverterObjetToXml.toXmlDocument(Degree.class, degrees.get(0));
+            List<Degree> degrees = Data.getDegrees();
+            XsltProcessor processor = new XsltProcessor("degree.xsl", "second.xsl");          
             processor.getTransformation(); // Se crea un archivo .xml con la segunda tranformación del objeto degree en la carpeta del proyecto
             out = response.getWriter();
             out.println(head());
-            out.println(processor.readFile()); // se lee el archivo .xml que se creó anteriormente
+            for(Degree degree: degrees){
+                util.ConverterObjetToXml.toXmlDocument(Degree.class, degree);
+                out.println(processor.readFile()); // se lee el archivo .xml que se creó anteriormente
+            }          
             out.println(footer());
         } catch (IOException ex) {
             Logger.getLogger(DegreeCommand.class.getName()).log(Level.SEVERE, null, ex);
