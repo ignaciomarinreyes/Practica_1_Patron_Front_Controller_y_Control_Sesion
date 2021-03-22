@@ -18,12 +18,10 @@ public class DegreeCommand extends FrontCommand {
         try {
             List<Degree> degrees = Data.getDegrees();
             XsltProcessor processor = new XsltProcessor("degree.xsl", "second.xsl");          
-            processor.getTransformation(); // Se crea un archivo .xml con la segunda tranformación del objeto degree en la carpeta del proyecto
             out = response.getWriter();
             out.println(head());
-            for(Degree degree: degrees){
-                util.ConverterObjetToXml.toXmlDocument(Degree.class, degree);
-                out.println(processor.readFile()); // se lee el archivo .xml que se creó anteriormente
+            for(Degree degree: degrees){               
+                out.println(processor.getTransformation(util.ConverterObjetToXml.toXmlDegree(Degree.class, degree))); // se lee el archivo .xml que se creó anteriormente
             }          
             out.println(footer());
         } catch (IOException ex) {

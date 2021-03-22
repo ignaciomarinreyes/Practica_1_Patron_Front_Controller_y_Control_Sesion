@@ -1,9 +1,9 @@
-
 package util;
 
 import business.Degree;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.StringWriter;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,17 +12,21 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-
 public class ConverterObjetToXml {
-    
-    public static void toXmlDocument(Class object, Object element){
+
+    public static String toXmlDegree(Class object, Object element) {
+        String result = null;
         try {
             JAXBContext jc = JAXBContext.newInstance(object);
             Marshaller marshaller = jc.createMarshaller();
-            marshaller.marshal(element, new File("/Users/ignacio/GoogleDrive/Ingenieria_informatica/4_2/Arquitectura_sofware/Entregas_del_proyecto/Practica_1_Patron_Front_Controller_y_Control_Sesion/UniversityBook/src/main/java/xml/degree.xml"));
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            StringWriter sw = new StringWriter();
+            marshaller.marshal(element, sw);
+            result = sw.toString();
         } catch (JAXBException ex) {
             Logger.getLogger(ConverterObjetToXml.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }       
-    
+        return result;
+    }
+
 }
