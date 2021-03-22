@@ -1,6 +1,7 @@
 package util;
 
 import business.Degree;
+import business.University;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.StringWriter;
@@ -14,7 +15,22 @@ import javax.xml.bind.Marshaller;
 
 public class ConverterObjetToXml {
 
-    public static String toXmlDegree(Class object, Object element) {
+    public static String toXmlDegree(Class object, Degree element) {
+        String result = null;
+        try {
+            JAXBContext jc = JAXBContext.newInstance(object);
+            Marshaller marshaller = jc.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            StringWriter sw = new StringWriter();
+            marshaller.marshal(element, sw);
+            result = sw.toString();
+        } catch (JAXBException ex) {
+            Logger.getLogger(ConverterObjetToXml.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+
+    public static String toXmlUniversity(Class object, University element) {
         String result = null;
         try {
             JAXBContext jc = JAXBContext.newInstance(object);

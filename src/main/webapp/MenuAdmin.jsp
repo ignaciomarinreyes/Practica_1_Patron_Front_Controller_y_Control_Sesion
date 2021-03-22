@@ -12,7 +12,7 @@
         <input value='Universities' type='submit'>
     </form>  
     <form action='FrontController' style='float: left; margin-right: 10px;'>
-        <input type='hidden' name='command' value='DegreeCommand'>        
+        <input type='hidden' name='command' value='ShowDegrees'>        
         <input value='Degrees' type='submit'>
     </form>  
 </div>

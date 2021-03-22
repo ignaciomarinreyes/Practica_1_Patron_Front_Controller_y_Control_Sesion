@@ -1,11 +1,17 @@
 package business;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class University {
     private static int idUniversity = 0;
     private int id;
     private String name;
     private Address address;
 
+    public University() {
+    }
+ 
     public University(String name, Address address) {
         this.id = idUniversity++;
         this.name = name;
