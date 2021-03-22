@@ -17,12 +17,12 @@ public class DegreeCommand extends FrontCommand {
         PrintWriter out = null;
         try {
             List<Degree> degrees = Data.getDegrees();
-            XsltProcessor processor = new XsltProcessor("degree.xsl", "second.xsl");          
+            XsltProcessor processor = new XsltProcessor("degree.xsl");
             out = response.getWriter();
             out.println(head());
-            for(Degree degree: degrees){               
-                out.println(processor.getTransformation(util.ConverterObjetToXml.toXmlDegree(Degree.class, degree))); // se lee el archivo .xml que se creó anteriormente
-            }          
+            for (Degree degree : degrees) {
+                out.println(processor.getTransformation(util.ConverterObjetToXml.toXmlDegree(Degree.class, degree)));
+            }
             out.println(footer());
         } catch (IOException ex) {
             Logger.getLogger(DegreeCommand.class.getName()).log(Level.SEVERE, null, ex);
@@ -38,9 +38,8 @@ public class DegreeCommand extends FrontCommand {
                 + "  <link rel='stylesheet' type='text/css' href='template.css'/> "
                 + "</head> "
                 + "<body> "
-                + " <header id=\"title\"><a style=\"color: black; text-decoration: none;\" href=\"MainFrame.jsp\">UniversityBook</a></header>"  
+                + " <header id=\"title\"><a style=\"color: black; text-decoration: none;\" href=\"MainFrame.jsp\">UniversityBook</a></header>"
                 + " <div id='centerSpace'>";
-
     }
 
     private String footer() {

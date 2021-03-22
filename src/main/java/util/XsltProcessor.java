@@ -24,16 +24,13 @@ import javax.xml.transform.stream.StreamSource;
 
 public class XsltProcessor {
 
-    private String pathXmlEntityModel;
-    private String pathXslSecond;
-
-    public XsltProcessor(String pathXmlEntityModel, String pathXslSecond) {
-        this.pathXmlEntityModel = pathXmlEntityModel;
-        this.pathXslSecond = pathXslSecond;
+    private String pathFirstXSL;
+    
+    public XsltProcessor(String nameFirstXSL) {
+        this.pathFirstXSL = "/Users/ignacio/GoogleDrive/Ingenieria_informatica/4_2/Arquitectura_sofware/Entregas_del_proyecto/Practica_1_Patron_Front_Controller_y_Control_Sesion/UniversityBook/src/main/webapp/xsl/" + nameFirstXSL;
     }
 
     public String getTransformation(String xmlEntity) {
-        System.out.println(xmlEntity);
         return secondTransformation(firstTransformation(xmlEntity));
     }
 
@@ -42,7 +39,7 @@ public class XsltProcessor {
         try {
             TransformerFactory tFactory = TransformerFactory.newInstance();
             StreamSource source = new StreamSource(new StringReader(xmlEntity));
-            Source xslDoc = new StreamSource("/Users/ignacio/GoogleDrive/Ingenieria_informatica/4_2/Arquitectura_sofware/Entregas_del_proyecto/Practica_1_Patron_Front_Controller_y_Control_Sesion/UniversityBook/src/main/webapp/xsl/degree.xsl");
+            Source xslDoc = new StreamSource(pathFirstXSL);
             StringWriter writer = new StringWriter();
             StreamResult result = new StreamResult(writer);
             Transformer trasform = tFactory.newTransformer(xslDoc);
