@@ -7,9 +7,12 @@ import data.dao.UserDAO;
 
 public class Login extends FrontCommand {
 
-    @Override
-    public void process() {
+    static{
         loadData();
+    }
+    
+    @Override
+    public void process() {       
         login();
     }
 
@@ -24,7 +27,7 @@ public class Login extends FrontCommand {
         }
     }
 
-    private void loadData() {
+    private static void loadData() {
         Data.loadDefaultData();
     }
 }
