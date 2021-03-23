@@ -41,4 +41,13 @@ public class PostDAO {
         return posts;
     }
 
+    public static Post findById(int idPost) {
+        for (Post post : (ArrayList<Post>) Data.getPosts()) {
+            if (post.getId() == idPost) {
+                return post;
+            }
+        }
+        return null;
+    }
+
 }

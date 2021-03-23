@@ -41,7 +41,13 @@
                 result += "</div>";
             }
             result += "</div>";
-            result += "<p class='like'>Me gusta: " + post.numberLikes() + "</p>";
+            result += "<form action='FrontController' style='display: inline;' method='GET''>";
+            result += "<input type='hidden' name='command' value='GiveLike'> ";
+            result +="<input type='hidden' name='idPost' value='"+  post.getId() +"'> ";
+            result += "<input value=' + Añadir like' type='submit'>";
+            result += "</form> ";
+            result += "<span class='like'>Me gusta: " + post.numberLikes() + "</span>";
+
         }
         return result;
     }
