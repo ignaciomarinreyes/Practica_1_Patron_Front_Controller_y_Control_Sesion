@@ -49,10 +49,8 @@ public class Data {
 
     private static List<University> loadAllUniversities() {
         ArrayList<University> universities = new ArrayList<University>();
-        University ulpgc = new University("ULPGC", address.get(2));
-        University ull = new University("ULL", address.get(3));
+        University ulpgc = new University("ULPGC", address.get(2));   
         universities.add(ulpgc);
-        universities.add(ull);
         return universities;
     }
 
@@ -60,8 +58,6 @@ public class Data {
         ArrayList<Degree> degrees = new ArrayList<Degree>();
         ArrayList<University> universitiesInformatica = new ArrayList<University>();
         universitiesInformatica.add(universities.get(0));
-        ArrayList<University> universitiesAde = new ArrayList<University>();
-        universitiesAde.add(universities.get(1));
         Degree informatica = new Degree("Grado en Ingenieria Informatica", universitiesInformatica);
         degrees.add(informatica);
         return degrees;
@@ -70,8 +66,8 @@ public class Data {
     private static List<User> loadAllUser() {
         ArrayList<User> users = new ArrayList<User>();
         User ignacio = new User("ignacio", "1234", "Ignacio", "Marín Reyes", Rol.Student, address.get(0), universities.get(0), degrees.get(0));
-        User luis = new User("luis", "1234", "Luis", "Enrique Galindo", Rol.Student, address.get(1), universities.get(1), degrees.get(0));
-        User teacher = new User("Marta", "1234", "Marta", "Enrique Galindo", Rol.Teacher, address.get(1), universities.get(1), degrees.get(0));
+        User luis = new User("luis", "1234", "Luis", "Enrique Galindo", Rol.Student, address.get(1), universities.get(0), degrees.get(0));
+        User teacher = new User("Marta", "1234", "Marta", "Enrique Galindo", Rol.Teacher, address.get(1), universities.get(0), degrees.get(0));
         User admin = new User("admin", "1234", "admin", "Enrique Galindo", Rol.Admin, address.get(1));
         users.add(ignacio);
         users.add(luis);
@@ -88,7 +84,7 @@ public class Data {
         Subject ArquitecturaSofware = new Subject("Arquitectura del Sofware", 4, users.get(3), universities.get(0), degrees.get(0), usersArquitecturaSofware);
         Set<User> usersGestionSofware2 = new HashSet<User>();
         usersGestionSofware2.add(users.get(0));
-        Subject gestionSofware = new Subject("Gestión del Sofware 2", 4, users.get(3), universities.get(1), degrees.get(0), usersGestionSofware2);
+        Subject gestionSofware = new Subject("Gestión del Sofware 2", 4, users.get(3), universities.get(0), degrees.get(0), usersGestionSofware2);
 
         users.get(0).addSubject(ArquitecturaSofware);
         users.get(1).addSubject(ArquitecturaSofware);
