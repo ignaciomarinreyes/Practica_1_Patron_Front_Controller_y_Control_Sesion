@@ -51,7 +51,7 @@
                     out.println("<input value='Administrador' type='submit' style='background-color: #9BC1E4;>");
                 } else {
                     out.println("<input value='Panel de Control' type='submit'>");
-                }               
+                }
                 out.println("</form> ");
             }
             out.println("<span>  </span>");

@@ -56,8 +56,7 @@
         <%@ include file="Header.jsp"%>    
         <%@ include file="Menu.jsp"%>
         <div id="centerSpace">
-            <%        
-                out.println(printPosts((List<Post>)request.getAttribute("PostBySubject")));                          
+            <%                out.println(printPosts((List<Post>) request.getAttribute("PostBySubject")));
             %>
         </div>
         <%@ include file="Footer.html"%> 

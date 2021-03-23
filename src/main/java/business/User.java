@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class User {
+
     private static int idUser = 0;
     private int id;
     private List<Post> posts;
@@ -122,12 +123,12 @@ public class User {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
-  
-    public void addPost(Post post){
+
+    public void addPost(Post post) {
         posts.add(post);
     }
-    
-    public void addSubject(Subject subject){
+
+    public void addSubject(Subject subject) {
         subjects.add(subject);
     }
 
@@ -135,6 +136,5 @@ public class User {
     public String toString() {
         return "User{" + "id=" + id + ", nickname=" + nickname + ", password=" + password + ", name=" + name + ", surname=" + surname + ", rol=" + rol + ", address=" + address + ", university=" + university + ", degree=" + degree + '}';
     }
-    
-    
+
 }

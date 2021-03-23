@@ -13,7 +13,7 @@
             Mensaje de error
         </h1>
         <p style='padding-left: 10px;'>
-            Se ha producido un error en el comando <%= request.getParameter("command") %>
+            Se ha producido un error en el comando <%= request.getParameter("command")%>
         </p>
         <%@ include file="Footer.html"%> 
     </body>

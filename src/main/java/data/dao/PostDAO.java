@@ -6,8 +6,6 @@ import business.User;
 import data.Data;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 public class PostDAO {
 
@@ -22,13 +20,13 @@ public class PostDAO {
         }
         return posts;
     }
-    
-    public static List<Post> findPostBySubject(int idUniversity, int idDegree, int idSubject){
+
+    public static List<Post> findPostBySubject(int idUniversity, int idDegree, int idSubject) {
         List<Post> posts = new ArrayList<Post>();
         for (Post post : (ArrayList<Post>) Data.getPosts()) {
-            if(post.getSubject().getUniversity().getId() == idUniversity && post.getSubject().getDegree().getId() == idDegree && post.getSubject().getId() == idSubject){
-                 posts.add(post);
-            }          
+            if (post.getSubject().getUniversity().getId() == idUniversity && post.getSubject().getDegree().getId() == idDegree && post.getSubject().getId() == idSubject) {
+                posts.add(post);
+            }
         }
         return posts;
     }
@@ -36,11 +34,11 @@ public class PostDAO {
     public static List<Post> findPostByUser(User user) {
         List<Post> posts = new ArrayList<Post>();
         for (Post post : (ArrayList<Post>) Data.getPosts()) {
-           if(post.getUser().equals(user)){
-               posts.add(post);
-           }          
+            if (post.getUser().equals(user)) {
+                posts.add(post);
+            }
         }
         return posts;
     }
-   
+
 }

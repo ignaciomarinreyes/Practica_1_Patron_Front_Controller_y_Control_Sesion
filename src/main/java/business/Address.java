@@ -1,6 +1,7 @@
 package business;
 
 public class Address {
+
     private static int idAddress = 0;
     private int id;
     private String street;
@@ -21,7 +22,7 @@ public class Address {
     public int getId() {
         return id;
     }
- 
+
     public String getStreet() {
         return street;
     }
@@ -65,6 +66,6 @@ public class Address {
     @Override
     public String toString() {
         return street + ", " + number + ", " + cp + ", " + locality + ", " + autonomousCommunity;
-    } 
-  
+    }
+
 }

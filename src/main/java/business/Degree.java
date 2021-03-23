@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Degree {
+
     private static int idDegree = 0;
     private int id;
     private String name;
@@ -22,7 +23,7 @@ public class Degree {
     public int getId() {
         return id;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -38,6 +39,5 @@ public class Degree {
     public void setUniversity(List<University> university) {
         this.university = university;
     }
-    
-    
+
 }

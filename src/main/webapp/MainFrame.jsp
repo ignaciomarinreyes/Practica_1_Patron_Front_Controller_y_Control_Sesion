@@ -57,8 +57,7 @@
         <%@ include file="Header.jsp"%>    
         <%@ include file="Menu.jsp"%>    
         <div id="centerSpace">
-            <%                   
-                out.println(printPosts((List<Post>)request.getAttribute("PostsFollowedSubjectsByUser")));
+            <%                out.println(printPosts((List<Post>) request.getAttribute("PostsFollowedSubjectsByUser")));
             %>
         </div>
         <%@ include file="Footer.html"%> 

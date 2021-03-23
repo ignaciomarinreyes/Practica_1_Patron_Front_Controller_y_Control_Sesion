@@ -1,6 +1,5 @@
 package controller.commands;
 
-import business.Degree;
 import business.University;
 import data.Data;
 import java.io.IOException;

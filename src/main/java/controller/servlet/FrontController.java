@@ -5,20 +5,12 @@
  */
 package controller.servlet;
 
-import business.Comment;
-import business.Post;
-import business.User;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import javax.ejb.ApplicationException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import controller.commands.FrontCommand;
 
 /**
@@ -38,33 +30,32 @@ public class FrontController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {       
-            FrontCommand command = getCommand(request);
-            command.init(getServletContext(), request, response);
-            command.process();
+            throws ServletException, IOException {
+        FrontCommand command = getCommand(request);
+        command.init(getServletContext(), request, response);
+        command.process();
     }
-    
+
     private FrontCommand getCommand(HttpServletRequest request) {
-        try{
+        try {
             FrontCommand f = (FrontCommand) getCommandClass(request).newInstance();
             return f;
-        } catch(Exception e){          
+        } catch (Exception e) {
             e.printStackTrace();
-            //throw new ApplicationException(e) {};
             return null;
         }
     }
-    
-        private Class getCommandClass(HttpServletRequest request) {
+
+    private Class getCommandClass(HttpServletRequest request) {
         Class result = null;
         final String command = "controller.commands." + (String) request.getParameter("command");
-        try{
+        try {
             result = Class.forName(command);
-        } catch(ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             result = controller.commands.Unknow.class;
         }
         return result;
-    }     
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -104,6 +95,5 @@ public class FrontController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 
 }

@@ -2,14 +2,10 @@ package util;
 
 import business.Degree;
 import business.University;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.StringWriter;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 

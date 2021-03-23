@@ -1,4 +1,3 @@
-
 package business;
 
 import java.time.LocalDate;
@@ -8,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Post {
+
     private static int idPost = 0;
     private int id;
     private String title;
@@ -79,36 +79,35 @@ public class Post {
         return id;
     }
 
-
     public List<Comment> getComments() {
         return comments;
     }
-    
-    public void addComment(Comment comment){
+
+    public void addComment(Comment comment) {
         comments.add(comment);
     }
 
     public List<String> getFiles() {
         return files;
     }
-    
-    public void addFile(String pathFile){
+
+    public void addFile(String pathFile) {
         files.add(pathFile);
     }
 
     public List<String> getLinks() {
         return links;
     }
-    
-    public void addLink(String link){
+
+    public void addLink(String link) {
         links.add(link);
     }
-    
-    public void addLike(User user){
+
+    public void addLike(User user) {
         likes.add(user);
     }
-    
-    public int numberLikes(){
+
+    public int numberLikes() {
         return likes.size();
     }
 
@@ -120,5 +119,5 @@ public class Post {
     public String toString() {
         return "Post{" + "id=" + id + ", title=" + title + ", user=" + user + ", date=" + date + ", content=" + content + ", pathImage=" + pathImage + '}';
     }
-   
+
 }

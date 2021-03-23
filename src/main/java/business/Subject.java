@@ -3,6 +3,7 @@ package business;
 import java.util.Set;
 
 public class Subject {
+
     private static int idSubject = 0;
     private int id;
     private String name;

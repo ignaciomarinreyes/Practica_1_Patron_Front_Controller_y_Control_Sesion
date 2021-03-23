@@ -3,6 +3,7 @@ package business;
 import java.time.LocalDate;
 
 public class Comment {
+
     private int idComment = 0;
     private int id;
     private User user;
@@ -19,7 +20,7 @@ public class Comment {
     public int getId() {
         return id;
     }
-    
+
     public User getUser() {
         return user;
     }
@@ -42,6 +43,6 @@ public class Comment {
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }   
-    
+    }
+
 }

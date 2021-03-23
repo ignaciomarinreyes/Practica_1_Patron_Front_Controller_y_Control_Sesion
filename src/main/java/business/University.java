@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class University {
+
     private static int idUniversity = 0;
     private int id;
     private String name;
@@ -11,13 +12,13 @@ public class University {
 
     public University() {
     }
- 
+
     public University(String name, Address address) {
         this.id = idUniversity++;
         this.name = name;
         this.address = address;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -37,6 +38,5 @@ public class University {
     public void setAddress(Address address) {
         this.address = address;
     }
-    
-    
+
 }
