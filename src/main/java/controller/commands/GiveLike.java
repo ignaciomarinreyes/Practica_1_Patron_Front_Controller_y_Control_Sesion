@@ -2,9 +2,7 @@ package controller.commands;
 
 import business.Post;
 import business.User;
-import data.Data;
 import data.dao.PostDAO;
-import javax.swing.plaf.metal.MetalInternalFrameUI;
 
 public class GiveLike extends FrontCommand {
 
